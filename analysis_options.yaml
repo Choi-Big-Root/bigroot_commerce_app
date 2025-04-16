@@ -6,7 +6,9 @@ analyzer:
 linter:
   rules:
     - prefer_relative_imports
-
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_literals_to_create_immutables
 dart_code_metrics:
   extends:
     - package:dart_code_metrics_presets/all.yaml
