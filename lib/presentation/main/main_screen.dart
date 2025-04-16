@@ -57,6 +57,29 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       body: const Center(child: Text('main_screen')),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navHome),
+            label: 'home',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navCategory),
+            label: 'category',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navSearch),
+            label: 'search',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navUser),
+            label: 'user',
+          ),
+        ],
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+      ),
     );
   }
 }
