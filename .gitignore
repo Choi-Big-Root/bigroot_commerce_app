@@ -75,3 +75,6 @@ android/local.properties
 
 # Firebase emulators (if used)
 firebase-debug.log
+
+#이미지 관련 저작권 문제가 발생할 수 있으니 제외.
+assets/
