@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/theme/constant/app_colors.dart';
 import '../../core/theme/constant/app_icons.dart';
 import '../routes/route_path.dart';
 
@@ -22,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Timer.periodic(const Duration(seconds: 2), (timer) {
       timer.cancel();
-      context.go(RoutePath.home);
+      context.go(RoutePath.main);
     });
   }
 
