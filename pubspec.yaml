@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   dart_code_metrics: ^5.7.6
   go_router: ^14.8.1
+  flutter_svg: ^2.0.9
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/theme/theme_data.dart';
 import 'presentation/routes/routes.dart';
 
 void main() {
@@ -10,6 +12,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(routerConfig: router);
+    return ScreenUtilInit(
+      builder:
+          (context, child) => MaterialApp.router(
+            routerConfig: router,
+            theme: CustomThemeData.themeData,
+          ),
+      designSize: const Size(375, 812),
+    );
   }
 }
