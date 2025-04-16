@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/theme/constant/app_icons.dart';
+import '../pages/category/category_page.dart';
+import '../pages/home/home_page.dart';
+import '../pages/search/search_page.dart';
+import '../pages/user/user_page.dart';
+import 'cubit/bottom_nav_cubit.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => BottomNaveCubit(),
+      child: const MainScreenView(),
+    );
+  }
+}
+
+class MainScreenView extends StatelessWidget {
+  const MainScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,29 +74,47 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(child: Text('main_screen')),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navHome),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navCategory),
-            label: 'category',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navSearch),
-            label: 'search',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navUser),
-            label: 'user',
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+      body: BlocBuilder<BottomNaveCubit, BottomNav>(
+        builder:
+            (_, state) => switch (state) {
+              BottomNav.home => const HomePage(),
+              BottomNav.category => const CategoryPage(),
+              BottomNav.search => const SearchPage(),
+              BottomNav.user => const UserPage(),
+            },
+      ),
+      bottomNavigationBar: BlocBuilder<BottomNaveCubit, BottomNav>(
+        builder:
+            (context, state) => BottomNavigationBar(
+              items: [
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(AppIcons.navHome),
+                  label: 'home',
+                  activeIcon: SvgPicture.asset(AppIcons.navHomeOn),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(AppIcons.navCategory),
+                  label: 'category',
+                  activeIcon: SvgPicture.asset(AppIcons.navCategoryOn),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(AppIcons.navSearch),
+                  label: 'search',
+                  activeIcon: SvgPicture.asset(AppIcons.navSearchOn),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(AppIcons.navUser),
+                  label: 'user',
+                  activeIcon: SvgPicture.asset(AppIcons.navUserOn),
+                ),
+              ],
+              onTap:
+                  (index) => context.read<BottomNaveCubit>().changeIndex(index),
+              currentIndex: state.index,
+              type: BottomNavigationBarType.fixed,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+            ),
       ),
     );
   }
