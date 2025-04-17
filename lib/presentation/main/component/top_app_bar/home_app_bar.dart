@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -22,7 +23,15 @@ class HomeAppBar extends StatelessWidget {
           child: AppBar(
             leading: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
-              child: SvgPicture.asset(AppIcons.mainLogo),
+              child: SvgPicture.asset(
+                AppIcons.mainLogo,
+                colorFilter: ColorFilter.mode(
+                  (state.isMarket)
+                      ? Theme.of(context).colorScheme.background
+                      : Theme.of(context).colorScheme.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
             ),
             title: DefaultTabController(
               length: MallType.values.length,
@@ -43,7 +52,9 @@ class HomeAppBar extends StatelessWidget {
                 child: SvgPicture.asset(
                   AppIcons.location,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.background,
+                    (state.isMarket)
+                        ? Theme.of(context).colorScheme.background
+                        : Theme.of(context).colorScheme.contentPrimary,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -54,7 +65,9 @@ class HomeAppBar extends StatelessWidget {
                 child: SvgPicture.asset(
                   AppIcons.cart,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.background,
+                    (state.isMarket)
+                        ? Theme.of(context).colorScheme.background
+                        : Theme.of(context).colorScheme.contentPrimary,
                     BlendMode.srcIn,
                   ),
                 ),
