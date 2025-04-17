@@ -16,6 +16,8 @@ dependencies:
   flutter_bloc: ^9.1.0
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
+  retrofit: ^4.4.2
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +27,7 @@ dev_dependencies:
   json_serializable: ^6.9.4
   flutter_lints: ^5.0.0
   very_good_analysis: ^7.0.0
+  retrofit_generator: ^9.1.9
 
 flutter:
   uses-material-design: true

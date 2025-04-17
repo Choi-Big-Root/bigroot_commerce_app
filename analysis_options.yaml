@@ -15,3 +15,4 @@ linter:
     prefer_const_constructors: true
     avoid_print: false # 개발 중 print 허용
     always_use_package_imports: false # 상대 경로 import 허용
+    sort_pub_dependencies: false #dependencies 관련해서 알파벳순 정렬 안되어 있으면 에러..
