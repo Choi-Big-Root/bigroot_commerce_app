@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
 
@@ -19,7 +20,7 @@ class HomeAppBar extends StatelessWidget {
           color:
               (state.isMarket)
                   ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.background,
+                  : Theme.of(context).colorScheme.onPrimary,
           child: AppBar(
             leading: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
@@ -27,24 +28,62 @@ class HomeAppBar extends StatelessWidget {
                 AppIcons.mainLogo,
                 colorFilter: ColorFilter.mode(
                   (state.isMarket)
-                      ? Theme.of(context).colorScheme.background
+                      ? Theme.of(context).colorScheme.onPrimary
                       : Theme.of(context).colorScheme.primary,
                   BlendMode.srcIn,
                 ),
               ),
             ),
-            title: DefaultTabController(
-              length: MallType.values.length,
-              initialIndex: state.index,
-              child: TabBar(
-                tabs: List.generate(MallType.values.length, (index) {
-                  return Tab(text: MallType.values[index].toName);
-                }),
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.black,
-                onTap:
-                    (index) => context.read<MallTypeCubit>().changeIndex(index),
+            title: AnimatedContainer(
+              decoration: BoxDecoration(
+                color:
+                    (state.isMarket)
+                        ? Theme.of(context).colorScheme.primaryContainer
+                        : Theme.of(context).colorScheme.surface,
+                borderRadius: BorderRadius.circular(20.h),
               ),
+              child: SizedBox(
+                height: 28.h,
+                child: DefaultTabController(
+                  length: MallType.values.length,
+                  initialIndex: state.index,
+                  child: TabBar(
+                    tabs: List.generate(MallType.values.length, (index) {
+                      return Tab(text: MallType.values[index].toName);
+                    }),
+                    isScrollable: false,
+                    indicator: BoxDecoration(
+                      color:
+                          (state.isMarket)
+                              ? Theme.of(context).colorScheme.onPrimary
+                              : Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.all(Radius.circular(30.h)),
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    dividerColor: Colors.transparent,
+                    labelColor:
+                        (state.isMarket)
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onPrimary,
+                    labelStyle: Theme.of(context).textTheme.labelLarge
+                        ?.copyWith(fontWeight: CustomFontWeight.bold),
+                    labelPadding: EdgeInsets.symmetric(horizontal: 12.w),
+                    unselectedLabelColor:
+                        (state.isMarket)
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.contentPrimary,
+                    unselectedLabelStyle: Theme.of(context).textTheme.labelLarge
+                        ?.copyWith(fontWeight: CustomFontWeight.regular),
+                    onTap:
+                        (index) =>
+                            context.read<MallTypeCubit>().changeIndex(index),
+                    splashBorderRadius: const BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+              duration: const Duration(milliseconds: 400),
             ),
             actions: [
               Padding(
@@ -53,7 +92,7 @@ class HomeAppBar extends StatelessWidget {
                   AppIcons.location,
                   colorFilter: ColorFilter.mode(
                     (state.isMarket)
-                        ? Theme.of(context).colorScheme.background
+                        ? Theme.of(context).colorScheme.onPrimary
                         : Theme.of(context).colorScheme.contentPrimary,
                     BlendMode.srcIn,
                   ),
@@ -66,7 +105,7 @@ class HomeAppBar extends StatelessWidget {
                   AppIcons.cart,
                   colorFilter: ColorFilter.mode(
                     (state.isMarket)
-                        ? Theme.of(context).colorScheme.background
+                        ? Theme.of(context).colorScheme.onPrimary
                         : Theme.of(context).colorScheme.contentPrimary,
                     BlendMode.srcIn,
                   ),

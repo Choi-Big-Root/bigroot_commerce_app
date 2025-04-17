@@ -26,7 +26,7 @@ class DefaultAppBar extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color:
                     (state.isMarket)
-                        ? Theme.of(context).colorScheme.background
+                        ? Theme.of(context).colorScheme.onPrimary
                         : Theme.of(context).colorScheme.contentPrimary,
                 fontWeight: CustomFontWeight.semiBold,
               ),

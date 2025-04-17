@@ -6,9 +6,9 @@ extension MallTypeX on MallType {
   String get toName {
     switch (this) {
       case MallType.market:
-        return 'BIG마켓';
+        return 'BIG 마켓';
       case MallType.beauty:
-        return 'BIG뷰티';
+        return 'BIG 뷰티';
     }
   }
 
