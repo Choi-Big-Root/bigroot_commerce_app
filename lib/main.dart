@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
           (context, child) => MaterialApp.router(
             routerConfig: router,
             theme: CustomThemeData.themeData,
+            debugShowCheckedModeBanner: false,
           ),
       designSize: const Size(375, 812),
     );

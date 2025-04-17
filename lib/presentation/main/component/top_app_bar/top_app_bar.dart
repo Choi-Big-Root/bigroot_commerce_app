@@ -12,7 +12,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavCubit, BottomNav>(
-      builder: (context, state) {
+      builder: (_, state) {
         switch (state) {
           case BottomNav.home:
             return const HomeAppBar();
