@@ -86,28 +86,13 @@ class MainScreenView extends StatelessWidget {
       bottomNavigationBar: BlocBuilder<BottomNaveCubit, BottomNav>(
         builder:
             (context, state) => BottomNavigationBar(
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navHome),
-                  label: 'home',
-                  activeIcon: SvgPicture.asset(AppIcons.navHomeOn),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navCategory),
-                  label: 'category',
-                  activeIcon: SvgPicture.asset(AppIcons.navCategoryOn),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navSearch),
-                  label: 'search',
-                  activeIcon: SvgPicture.asset(AppIcons.navSearchOn),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navUser),
-                  label: 'user',
-                  activeIcon: SvgPicture.asset(AppIcons.navUserOn),
-                ),
-              ],
+              items: List.generate(BottomNav.values.length, (index) {
+                return BottomNavigationBarItem(
+                  icon: BottomNav.values[index].icon,
+                  label: BottomNav.values[index].label,
+                  activeIcon: BottomNav.values[index].activeIcon,
+                );
+              }),
               onTap:
                   (index) => context.read<BottomNaveCubit>().changeIndex(index),
               currentIndex: state.index,
