@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
 import '../../../../core/theme/custom/custom_app_bar.dart';
@@ -19,6 +18,9 @@ class HomeAppBar extends StatelessWidget {
         return AnimatedContainer(
           padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 8.w),
           color: state.theme.backgroundColor,
+          duration: const Duration(
+            milliseconds: CustomAppBarTheme.animationDuration,
+          ),
           child: AppBar(
             leading: SvgIconButton(
               icon: AppIcons.mainLogo,
@@ -33,6 +35,9 @@ class HomeAppBar extends StatelessWidget {
                   CustomAppBarTheme.containCuicularRadius,
                 ),
               ),
+              duration: const Duration(
+                milliseconds: CustomAppBarTheme.animationDuration,
+              ),
               child: SizedBox(
                 height: 28.h,
                 child: DefaultTabController(
@@ -42,7 +47,6 @@ class HomeAppBar extends StatelessWidget {
                     tabs: List.generate(MallType.values.length, (index) {
                       return Tab(text: MallType.values[index].toName);
                     }),
-                    isScrollable: false,
                     indicator: BoxDecoration(
                       color: state.theme.indicatorColor,
                       borderRadius: BorderRadius.all(
@@ -69,9 +73,6 @@ class HomeAppBar extends StatelessWidget {
                   ),
                 ),
               ),
-              duration: Duration(
-                milliseconds: CustomAppBarTheme.animationDuration,
-              ),
             ),
             actions: [
               SvgIconButton(
@@ -85,7 +86,6 @@ class HomeAppBar extends StatelessWidget {
             centerTitle: true,
             leadingWidth: 86.w,
           ),
-          duration: Duration(milliseconds: CustomAppBarTheme.animationDuration),
         );
       },
     );

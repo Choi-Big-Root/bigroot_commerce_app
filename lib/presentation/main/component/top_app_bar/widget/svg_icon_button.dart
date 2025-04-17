@@ -3,18 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SvgIconButton extends StatelessWidget {
-  final String icon;
-  final Color color;
-  final double? paddingV;
-  final double? paddingH;
-
   const SvgIconButton({
-    super.key,
     required this.icon,
     required this.color,
     this.paddingV,
     this.paddingH,
+    super.key,
   });
+  final String icon;
+  final Color color;
+  final double? paddingV;
+  final double? paddingH;
 
   @override
   Widget build(BuildContext context) {

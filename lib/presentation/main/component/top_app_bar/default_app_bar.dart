@@ -7,8 +7,8 @@ import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
 
 class DefaultAppBar extends StatelessWidget {
+  const DefaultAppBar({required this.label, super.key});
   final String label;
-  const DefaultAppBar({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {

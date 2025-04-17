@@ -4,6 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constant/app_colors.dart';
 
 class CustomAppBarTheme {
+  CustomAppBarTheme({
+    required this.systemUiOverlayStyle,
+    required this.backgroundColor,
+    required this.logoColor,
+    required this.iconColor,
+    required this.containerColor,
+    required this.indicatorColor,
+    required this.labelColor,
+    required this.unselectedLabelColor,
+  });
+
   final SystemUiOverlayStyle systemUiOverlayStyle;
   final Color backgroundColor;
   final Color logoColor;
@@ -13,7 +24,7 @@ class CustomAppBarTheme {
   final Color labelColor;
   final Color unselectedLabelColor;
 
-  static final int animationDuration = 400;
+  static const int animationDuration = 400;
   static final double containCuicularRadius = 30.h;
 
   static final CustomAppBarTheme market = CustomAppBarTheme(
@@ -37,15 +48,4 @@ class CustomAppBarTheme {
     labelColor: AppColors.onPrimary,
     unselectedLabelColor: AppColors.contentPrimary,
   );
-
-  CustomAppBarTheme({
-    required this.systemUiOverlayStyle,
-    required this.backgroundColor,
-    required this.logoColor,
-    required this.iconColor,
-    required this.containerColor,
-    required this.indicatorColor,
-    required this.labelColor,
-    required this.unselectedLabelColor,
-  });
 }

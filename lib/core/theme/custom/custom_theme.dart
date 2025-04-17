@@ -110,7 +110,7 @@ class CustomTheme {
   );
 
   /// color_scheme
-  static final colorScheme = const ColorScheme(
+  static const colorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.primary,
     onPrimary: AppColors.onPrimary,
