@@ -46,8 +46,8 @@ extension BottomNavX on BottomNav {
   }
 }
 
-class BottomNaveCubit extends Cubit<BottomNav> {
-  BottomNaveCubit() : super(BottomNav.home);
+class BottomNavCubit extends Cubit<BottomNav> {
+  BottomNavCubit() : super(BottomNav.home);
 
   /// emit :  Bloc or Cubic 의 상태를 내보내는 역할.
   void changeIndex(int index) => emit(BottomNav.values[index]);
