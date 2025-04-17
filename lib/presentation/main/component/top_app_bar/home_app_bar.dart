@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../../core/theme/custom/custom_app_bar.dart';
 import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
@@ -17,29 +18,21 @@ class HomeAppBar extends StatelessWidget {
       builder: (_, state) {
         return AnimatedContainer(
           padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 8.w),
-          color:
-              (state.isMarket)
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.onPrimary,
+          color: state.theme.backgroundColor,
           child: AppBar(
             leading: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
               child: SvgPicture.asset(
                 AppIcons.mainLogo,
                 colorFilter: ColorFilter.mode(
-                  (state.isMarket)
-                      ? Theme.of(context).colorScheme.onPrimary
-                      : Theme.of(context).colorScheme.primary,
+                  state.theme.logoColor,
                   BlendMode.srcIn,
                 ),
               ),
             ),
             title: AnimatedContainer(
               decoration: BoxDecoration(
-                color:
-                    (state.isMarket)
-                        ? Theme.of(context).colorScheme.primaryContainer
-                        : Theme.of(context).colorScheme.surface,
+                color: state.theme.containerColor,
                 borderRadius: BorderRadius.circular(20.h),
               ),
               child: SizedBox(
@@ -53,25 +46,16 @@ class HomeAppBar extends StatelessWidget {
                     }),
                     isScrollable: false,
                     indicator: BoxDecoration(
-                      color:
-                          (state.isMarket)
-                              ? Theme.of(context).colorScheme.onPrimary
-                              : Theme.of(context).colorScheme.primary,
+                      color: state.theme.indicatorColor,
                       borderRadius: BorderRadius.all(Radius.circular(30.h)),
                     ),
                     indicatorSize: TabBarIndicatorSize.tab,
                     dividerColor: Colors.transparent,
-                    labelColor:
-                        (state.isMarket)
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.onPrimary,
+                    labelColor: state.theme.labelColor,
                     labelStyle: Theme.of(context).textTheme.labelLarge
                         ?.copyWith(fontWeight: CustomFontWeight.bold),
                     labelPadding: EdgeInsets.symmetric(horizontal: 12.w),
-                    unselectedLabelColor:
-                        (state.isMarket)
-                            ? Theme.of(context).colorScheme.onPrimary
-                            : Theme.of(context).colorScheme.contentPrimary,
+                    unselectedLabelColor: state.theme.unselectedLabelColor,
                     unselectedLabelStyle: Theme.of(context).textTheme.labelLarge
                         ?.copyWith(fontWeight: CustomFontWeight.regular),
                     onTap:
@@ -83,7 +67,9 @@ class HomeAppBar extends StatelessWidget {
                   ),
                 ),
               ),
-              duration: const Duration(milliseconds: 400),
+              duration: Duration(
+                milliseconds: CustomAppBarTheme.animationDuration,
+              ),
             ),
             actions: [
               Padding(
@@ -91,9 +77,7 @@ class HomeAppBar extends StatelessWidget {
                 child: SvgPicture.asset(
                   AppIcons.location,
                   colorFilter: ColorFilter.mode(
-                    (state.isMarket)
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.contentPrimary,
+                    state.theme.iconColor,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -104,9 +88,7 @@ class HomeAppBar extends StatelessWidget {
                 child: SvgPicture.asset(
                   AppIcons.cart,
                   colorFilter: ColorFilter.mode(
-                    (state.isMarket)
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.contentPrimary,
+                    state.theme.iconColor,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -116,7 +98,7 @@ class HomeAppBar extends StatelessWidget {
             centerTitle: true,
             leadingWidth: 86.w,
           ),
-          duration: const Duration(milliseconds: 400),
+          duration: Duration(milliseconds: CustomAppBarTheme.animationDuration),
         );
       },
     );
