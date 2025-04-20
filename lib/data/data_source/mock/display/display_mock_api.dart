@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../../../dto/common/response_wrapper/response_wrapper.dart';
 import '../../../dto/display/menu/menu.dto.dart';
 import '../../remote/display.api.dart';
 import 'display_mock_data.dart';
@@ -25,12 +26,17 @@ class DisplayMockApi implements DisplayApi {
   }
 
   @override
-  Future<List<MenuDto>> getMenusByMallType(String mallType) {
+  Future<ResponseWrapper<List<MenuDto>>> getMenusByMallType(String mallType) {
     return Future(
-      () =>
-          (mallType == 'market')
-              ? _menuParser(DisplayMockData.menusByMarket)
-              : _menuParser(DisplayMockData.menusByBeauty),
+      () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: '',
+        data:
+            (mallType == 'market')
+                ? _menuParser(DisplayMockData.menusByMarket)
+                : _menuParser(DisplayMockData.menusByBeauty),
+      ),
     );
   }
 }
