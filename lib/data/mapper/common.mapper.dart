@@ -1,8 +1,8 @@
 import '../dto/common/response_wrapper/response_wrapper.dart';
 
-extension ReponseWrapperX on ResponseWrapper {
-  ResponseWrapper<T> toModel<T>(T data) {
-    return ResponseWrapper<T>(
+extension ResponseWrapperX<T> on ResponseWrapper<T> {
+  ResponseWrapper<R> toModel<R>(R data) {
+    return ResponseWrapper<R>(
       status: status,
       code: code,
       message: message,
