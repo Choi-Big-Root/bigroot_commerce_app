@@ -8,4 +8,9 @@ class ErrorResponse {
   final String? status;
   final String? code;
   final String? message;
+
+  @override
+  String toString() {
+    return 'status: $status, code: $code, message: $message';
+  }
 }
