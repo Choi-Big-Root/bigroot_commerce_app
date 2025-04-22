@@ -6,7 +6,7 @@ analyzer:
     - lib/**/*.freezed.dart
     - lib/**.config.dart
     - lib/firebase_options*.dart
-    - test/**
+    #- test/**
 
 linter:
   rules:
