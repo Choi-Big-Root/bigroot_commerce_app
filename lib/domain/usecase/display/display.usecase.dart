@@ -6,7 +6,7 @@ class DisplayUsecase {
 
   final DisplayRepository _displayRepository;
 
-  Future<T> excute<T>({
+  Future<T> execute<T>({
     required RemoteUsecase<DisplayRepository, T> usecase,
   }) async {
     return usecase(_displayRepository);
