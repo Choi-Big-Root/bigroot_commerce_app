@@ -1,3 +1,4 @@
+import 'package:bigroot_commerce_app/core/utils/constant.dart';
 import 'package:bigroot_commerce_app/core/utils/error/error_response.dart';
 import 'package:bigroot_commerce_app/data/data_source/remote/display.api.dart';
 import 'package:bigroot_commerce_app/data/repository_impl/display.repository_impl.dart';
@@ -6,7 +7,6 @@ import 'package:bigroot_commerce_app/domain/model/display/menu/menu.model.dart';
 import 'package:bigroot_commerce_app/domain/repository/display.repository.dart';
 import 'package:bigroot_commerce_app/domain/usecase/display/display.usecase.dart';
 import 'package:bigroot_commerce_app/domain/usecase/display/menu/get_menus.usecase.dart';
-import 'package:bigroot_commerce_app/presentation/main/cubit/mall_type_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

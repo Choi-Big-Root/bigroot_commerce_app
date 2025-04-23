@@ -1,5 +1,5 @@
 class ErrorResponse {
-  ErrorResponse({
+  const ErrorResponse({
     this.status = 'SUCCESS',
     this.code = '0000',
     this.message = '',

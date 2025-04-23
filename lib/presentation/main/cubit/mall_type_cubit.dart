@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theme/custom/custom_app_bar.dart';
-
-enum MallType { market, beauty }
+import '../../../core/utils/constant.dart';
 
 extension MallTypeX on MallType {
   String get toName {

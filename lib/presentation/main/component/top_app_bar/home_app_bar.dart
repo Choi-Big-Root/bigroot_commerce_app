@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/constant/app_icons.dart';
 import '../../../../core/theme/custom/custom_app_bar.dart';
 import '../../../../core/theme/custom/custom_font_weight.dart';
+import '../../../../core/utils/constant.dart';
 import '../../cubit/mall_type_cubit.dart';
 import 'widget/svg_icon_button.dart';
 

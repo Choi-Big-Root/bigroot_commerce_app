@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
+import '../../../../core/utils/constant.dart';
 import '../../cubit/mall_type_cubit.dart';
 
 class DefaultAppBar extends StatelessWidget {
