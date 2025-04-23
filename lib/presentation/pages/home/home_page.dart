@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
@@ -7,6 +8,8 @@ import '../../../domain/usecase/display/display.usecase.dart';
 import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
+import 'component/global_nav/global_nav_bar.dart';
+import 'component/global_nav/global_nav_bar_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -44,7 +47,21 @@ class HomePageView extends StatelessWidget {
             case Status.loading:
               return const Center(child: CircularProgressIndicator());
             case Status.success:
-              return Center(child: Text('${state.menus}'));
+              return DefaultTabController(
+                length: state.menus.length,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 46.h,
+                      child: GlobalNavBar(menus: state.menus),
+                    ),
+                    GlobalNavBarView(
+                      mallType: state.mallType,
+                      menus: state.menus,
+                    ),
+                  ],
+                ),
+              );
             case Status.error:
               return const Center(child: Text('error'));
           }
