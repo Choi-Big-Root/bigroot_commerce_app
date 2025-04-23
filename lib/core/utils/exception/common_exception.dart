@@ -17,7 +17,7 @@ class CommonException {
         );
       } else {
         const code = '8888';
-        return ErrorResponse(
+        return const ErrorResponse(
           status: 'unExcepted Error',
           code: code,
           message: '서비스에 일시적인 오류가 발생했습니다.\n 잠시 후에 다시 시도해주세요.',
@@ -25,7 +25,7 @@ class CommonException {
       }
     } else {
       const code = '7777';
-      return ErrorResponse(
+      return const ErrorResponse(
         status: 'unKnown Error',
         code: code,
         message: '서비스에 일시적인 오류가 발생했습니다.\n 잠시 후에 다시 시도해주세요.',

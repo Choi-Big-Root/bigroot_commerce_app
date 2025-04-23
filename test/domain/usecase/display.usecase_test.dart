@@ -62,7 +62,7 @@ void main() {
     'Test whether the menu list fails to be retrieved using usecase',
     () async {
       // 실패 응답(Mock 데이터) 생성
-      final result = Result<List<Menu>>.failure(ErrorResponse(status: 'error'));
+      const result = Result<List<Menu>>.failure(ErrorResponse(status: 'error'));
 
       // 가짜 UseCase 객체 생성
       final usecase = MockGetMenusUsecase();

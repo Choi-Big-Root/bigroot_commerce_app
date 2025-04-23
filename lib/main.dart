@@ -6,6 +6,31 @@ import 'service_locator.dart';
 
 void main() async {
   setLocator();
+
+  // final data = await DisplayMockApi().getMenusByMallType(MallType.market.name);
+  // CustomLogger.logger.d(data);
+  // final repository = await DisplayRepositoryImpl(
+  //   DisplayMockApi(),
+  // ).getMenusByMallType(mallType: MallType.market);
+  // CustomLogger.logger.d(repository);
+  //
+  // final usecase = await DisplayUsecase(
+  //   DisplayRepositoryImpl(DisplayMockApi()),
+  // ).execute(usecase: GetMenusUsecase(MallType.market));
+  //
+  // CustomLogger.logger.d(usecase);
+  //
+  // final menus = await GetMenusUsecase(
+  //   MallType.market,
+  // ).call(DisplayRepositoryImpl(DisplayMockApi()));
+  //
+  // CustomLogger.logger.d(menus);
+  //
+  // final locatorMenus = await locator<DisplayUsecase>().execute(
+  //   usecase: GetMenusUsecase(MallType.market),
+  // );
+  // CustomLogger.logger.d(locatorMenus);
+
   runApp(const MainApp());
 }
 
