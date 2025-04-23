@@ -44,17 +44,28 @@ class HomePageView extends StatelessWidget {
         builder: (_, state) {
           switch (state.status) {
             case Status.initial:
-            case Status.loading:
               return const Center(child: CircularProgressIndicator());
-            case Status.success:
+            case Status.loading:
               return DefaultTabController(
+                key: ValueKey<MallType>(state.mallType),
                 length: state.menus.length,
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 46.h,
-                      child: GlobalNavBar(menus: state.menus),
+                    GlobalNavBar(menus: state.menus),
+                    GlobalNavBarView(
+                      mallType: state.mallType,
+                      menus: state.menus,
                     ),
+                  ],
+                ),
+              );
+            case Status.success:
+              return DefaultTabController(
+                key: ValueKey<MallType>(state.mallType),
+                length: state.menus.length,
+                child: Column(
+                  children: [
+                    GlobalNavBar(menus: state.menus),
                     GlobalNavBarView(
                       mallType: state.mallType,
                       menus: state.menus,
