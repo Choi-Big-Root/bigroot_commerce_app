@@ -20,6 +20,7 @@ class GlobalNavBarView extends StatelessWidget {
         children: List.generate(
           menus.length,
           (index) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('mallType : $mallType'),
               Text('title : ${menus[index].title}'),
