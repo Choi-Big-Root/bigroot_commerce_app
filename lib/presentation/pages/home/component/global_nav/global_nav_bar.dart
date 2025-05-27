@@ -29,7 +29,7 @@ class GlobalNavBar extends StatelessWidget {
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
                     color: colorScheme.primary,
-                    width: 2.h,
+                    width: 2.w,
                   ),
                 ),
                 dividerColor: Colors.transparent,
