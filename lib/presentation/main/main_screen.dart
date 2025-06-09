@@ -30,14 +30,17 @@ class MainScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TopAppBar(),
-      body: BlocBuilder<BottomNavCubit, BottomNav>(
-        builder:
-            (_, state) => switch (state) {
-              BottomNav.home => const HomePage(),
-              BottomNav.category => const CategoryPage(),
-              BottomNav.search => const SearchPage(),
-              BottomNav.user => const UserPage(),
-            },
+      body: ColoredBox(
+        color: Theme.of(context).colorScheme.background,
+        child: BlocBuilder<BottomNavCubit, BottomNav>(
+          builder:
+              (_, state) => switch (state) {
+                BottomNav.home => const HomePage(),
+                BottomNav.category => const CategoryPage(),
+                BottomNav.search => const SearchPage(),
+                BottomNav.user => const UserPage(),
+              },
+        ),
       ),
       bottomNavigationBar: BlocBuilder<BottomNavCubit, BottomNav>(
         builder:
