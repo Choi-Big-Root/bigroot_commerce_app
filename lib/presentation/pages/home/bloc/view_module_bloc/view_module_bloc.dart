@@ -40,12 +40,15 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
   ) async {
     // 로딩 상태로 변경
     emit(state.copyWith(status: Status.loading));
+
+    await Future.delayed(const Duration(seconds: 1));
+
     final tabId = event.tabId;
 
     try {
       // 데이터 fetch 시도
       final response = await _fetch(tabId);
-      
+
       // Result 타입에 따른 분기 처리
       switch (response) {
         case Success(:final data):

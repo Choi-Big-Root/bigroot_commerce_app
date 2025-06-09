@@ -30,12 +30,6 @@ void main() async {
   //   usecase: GetMenusUsecase(MallType.market),
   // );
   // CustomLogger.logger.d(locatorMenus);
-
-  final locatorMenus = await locator<DisplayUsecase>().execute(
-    usecase: GetViewModulesUsecase(10001),
-  );
-  CustomLogger.logger.d(locatorMenus);
-
   runApp(const MainApp());
 }
 
