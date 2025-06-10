@@ -1,4 +1,5 @@
 // Flutter Bloc 패키지 - 상태 관리를 위한 핵심 패키지
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // Freezed 패키지 - 불변성 객체 생성을 위한 코드 생성기
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,6 +13,7 @@ import '../../../../../domain/model/common/result.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
 import '../../../../../domain/usecase/display/display.usecase.dart';
 import '../../../../../domain/usecase/display/view_module/get_view_modules.usecase.dart';
+import '../../component/view_module_list/view_module_factory/view_module_factory.dart';
 
 // 관련 파일들을 part 지시문으로 포함
 part 'view_module_event.dart';
@@ -27,7 +29,7 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     // ViewModuleInitialized 이벤트 발생 시 _onViewModelInitialized 메서드 실행
     on<ViewModuleInitialized>(_onViewModelInitialized);
   }
-  
+
   // UseCase 인스턴스 - 데이터 fetching을 위해 사용
   final DisplayUsecase _displayUsecase;
 
@@ -53,11 +55,14 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
       switch (response) {
         case Success(:final data):
           // 성공 시: 상태 업데이트 (성공 상태, 탭 ID, 뷰 모듈 데이터)
+          final viewModuleFactory = ViewModuleFactory();
+          final viewModules =
+              data.map((e) => viewModuleFactory.textToWidget(e)).toList();
           emit(
             state.copyWith(
               status: Status.success,
               tabId: tabId,
-              viewModules: data,
+              viewModules: viewModules,
             ),
           );
         case Failure(:final error):
