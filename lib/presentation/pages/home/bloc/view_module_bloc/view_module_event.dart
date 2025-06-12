@@ -8,3 +8,7 @@ class ViewModuleInitialized extends ViewModuleEvent {
   ViewModuleInitialized(this.tabId);
   final int tabId;
 }
+
+class ViewModuleFetched extends ViewModuleEvent {
+  ViewModuleFetched();
+}

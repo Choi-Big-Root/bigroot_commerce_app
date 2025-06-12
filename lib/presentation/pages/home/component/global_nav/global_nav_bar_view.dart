@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/constant.dart';
 import '../../../../../domain/model/display/menu/menu.model.dart';
-import '../../../../../domain/usecase/display/display.usecase.dart';
 import '../../../../../service_locator.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 import '../view_module_list/view_module_list.dart';
@@ -31,12 +30,11 @@ class GlobalNavBarView extends StatelessWidget {
           // 주의: 메모리 사용량이 증가할 수 있음
           return BlocProvider(
             create:
-                (_) => ViewModuleBloc(
-                  locator<DisplayUsecase>(),
-                ) // DI를 통해 UseCase 주입
-                ..add(
-                  ViewModuleInitialized(menus[index].tabId),
-                ), // 블록 생성 즉시 초기화 이벤트 발생
+                (_) =>
+                    locator<ViewModuleBloc>() // DI를 통해 UseCase 주입
+                      ..add(
+                        ViewModuleInitialized(menus[index].tabId),
+                      ), // 블록 생성 즉시 초기화 이벤트 발생
             child: const ViewModuleList(), // 실제 뷰 모듈 리스트 표시
           );
         }),

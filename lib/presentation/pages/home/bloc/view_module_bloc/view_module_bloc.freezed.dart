@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ViewModuleState {
 
- Status get status; int get tabId; List<Widget> get viewModules; ErrorResponse get error;
+ Status get status; int get tabId; int get currentPage; bool get isEndOfPage; List<Widget> get viewModules; ErrorResponse get error;
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ViewModuleStateCopyWith<ViewModuleState> get copyWith => _$ViewModuleStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&const DeepCollectionEquality().equals(other.viewModules, viewModules)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.isEndOfPage, isEndOfPage) || other.isEndOfPage == isEndOfPage)&&const DeepCollectionEquality().equals(other.viewModules, viewModules)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,tabId,const DeepCollectionEquality().hash(viewModules),error);
+int get hashCode => Object.hash(runtimeType,status,tabId,currentPage,isEndOfPage,const DeepCollectionEquality().hash(viewModules),error);
 
 @override
 String toString() {
-  return 'ViewModuleState(status: $status, tabId: $tabId, viewModules: $viewModules, error: $error)';
+  return 'ViewModuleState(status: $status, tabId: $tabId, currentPage: $currentPage, isEndOfPage: $isEndOfPage, viewModules: $viewModules, error: $error)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ViewModuleStateCopyWith<$Res>  {
   factory $ViewModuleStateCopyWith(ViewModuleState value, $Res Function(ViewModuleState) _then) = _$ViewModuleStateCopyWithImpl;
 @useResult
 $Res call({
- Status status, int tabId, List<Widget> viewModules, ErrorResponse error
+ Status status, int tabId, int currentPage, bool isEndOfPage, List<Widget> viewModules, ErrorResponse error
 });
 
 
@@ -63,11 +63,13 @@ class _$ViewModuleStateCopyWithImpl<$Res>
 
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? tabId = null,Object? viewModules = null,Object? error = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? tabId = null,Object? currentPage = null,Object? isEndOfPage = null,Object? viewModules = null,Object? error = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int,viewModules: null == viewModules ? _self.viewModules : viewModules // ignore: cast_nullable_to_non_nullable
+as int,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,isEndOfPage: null == isEndOfPage ? _self.isEndOfPage : isEndOfPage // ignore: cast_nullable_to_non_nullable
+as bool,viewModules: null == viewModules ? _self.viewModules : viewModules // ignore: cast_nullable_to_non_nullable
 as List<Widget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
@@ -80,11 +82,13 @@ as ErrorResponse,
 
 
 class _ViewModuleState implements ViewModuleState {
-   _ViewModuleState({this.status = Status.initial, this.tabId = -1, final  List<Widget> viewModules = const <Widget>[], this.error = const ErrorResponse()}): _viewModules = viewModules;
+   _ViewModuleState({this.status = Status.initial, this.tabId = 0, this.currentPage = 1, this.isEndOfPage = false, final  List<Widget> viewModules = const <Widget>[], this.error = const ErrorResponse()}): _viewModules = viewModules;
   
 
 @override@JsonKey() final  Status status;
 @override@JsonKey() final  int tabId;
+@override@JsonKey() final  int currentPage;
+@override@JsonKey() final  bool isEndOfPage;
  final  List<Widget> _viewModules;
 @override@JsonKey() List<Widget> get viewModules {
   if (_viewModules is EqualUnmodifiableListView) return _viewModules;
@@ -104,16 +108,16 @@ _$ViewModuleStateCopyWith<_ViewModuleState> get copyWith => __$ViewModuleStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&const DeepCollectionEquality().equals(other._viewModules, _viewModules)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.isEndOfPage, isEndOfPage) || other.isEndOfPage == isEndOfPage)&&const DeepCollectionEquality().equals(other._viewModules, _viewModules)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,tabId,const DeepCollectionEquality().hash(_viewModules),error);
+int get hashCode => Object.hash(runtimeType,status,tabId,currentPage,isEndOfPage,const DeepCollectionEquality().hash(_viewModules),error);
 
 @override
 String toString() {
-  return 'ViewModuleState(status: $status, tabId: $tabId, viewModules: $viewModules, error: $error)';
+  return 'ViewModuleState(status: $status, tabId: $tabId, currentPage: $currentPage, isEndOfPage: $isEndOfPage, viewModules: $viewModules, error: $error)';
 }
 
 
@@ -124,7 +128,7 @@ abstract mixin class _$ViewModuleStateCopyWith<$Res> implements $ViewModuleState
   factory _$ViewModuleStateCopyWith(_ViewModuleState value, $Res Function(_ViewModuleState) _then) = __$ViewModuleStateCopyWithImpl;
 @override @useResult
 $Res call({
- Status status, int tabId, List<Widget> viewModules, ErrorResponse error
+ Status status, int tabId, int currentPage, bool isEndOfPage, List<Widget> viewModules, ErrorResponse error
 });
 
 
@@ -141,11 +145,13 @@ class __$ViewModuleStateCopyWithImpl<$Res>
 
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? tabId = null,Object? viewModules = null,Object? error = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? tabId = null,Object? currentPage = null,Object? isEndOfPage = null,Object? viewModules = null,Object? error = null,}) {
   return _then(_ViewModuleState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int,viewModules: null == viewModules ? _self._viewModules : viewModules // ignore: cast_nullable_to_non_nullable
+as int,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,isEndOfPage: null == isEndOfPage ? _self.isEndOfPage : isEndOfPage // ignore: cast_nullable_to_non_nullable
+as bool,viewModules: null == viewModules ? _self._viewModules : viewModules // ignore: cast_nullable_to_non_nullable
 as List<Widget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
