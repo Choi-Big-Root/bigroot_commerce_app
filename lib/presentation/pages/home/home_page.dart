@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
-import '../../../service_locator.dart';
+import '../../../dependency_injection.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<MallTypeCubit, MallType>(
       builder: (context, state) {
         return BlocProvider(
-          create: (_) => locator<MenuBloc>()..add(MenuInitialized(state)),
+          create: (_) => getIt<MenuBloc>()..add(MenuInitialized(state)),
           child: const HomePageView(),
         );
       },

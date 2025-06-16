@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // Freezed 패키지 - 불변성 객체 생성을 위한 코드 생성기
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 // 프로젝트 내부 의존성 임포트
@@ -32,6 +33,7 @@ EventTransformer<E> _throttleDroppable<E>(Duration duration) {
 
 /// ViewModule 관련 비즈니스 로직을 처리하는 Bloc
 /// [DisplayUsecase]를 통해 뷰 모듈 데이터를 가져오고 상태를 관리함
+@injectable
 class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
   // 생성자: DisplayUsecase를 주입받고 초기 상태를 설정
   ViewModuleBloc(this._displayUsecase) : super(ViewModuleState()) {

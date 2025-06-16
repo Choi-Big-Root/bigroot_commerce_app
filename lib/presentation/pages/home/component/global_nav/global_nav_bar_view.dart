@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/constant.dart';
+import '../../../../../dependency_injection.dart';
 import '../../../../../domain/model/display/menu/menu.model.dart';
-import '../../../../../service_locator.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 import '../view_module_list/view_module_list.dart';
 
@@ -31,7 +31,7 @@ class GlobalNavBarView extends StatelessWidget {
           return BlocProvider(
             create:
                 (_) =>
-                    locator<ViewModuleBloc>() // DI를 통해 UseCase 주입
+                    getIt<ViewModuleBloc>() // DI를 통해 UseCase 주입
                       ..add(
                         ViewModuleInitialized(menus[index].tabId),
                       ), // 블록 생성 즉시 초기화 이벤트 발생
