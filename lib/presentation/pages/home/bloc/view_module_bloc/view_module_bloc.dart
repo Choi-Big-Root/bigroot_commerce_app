@@ -56,14 +56,24 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     ViewModuleInitialized event,
     Emitter<ViewModuleState> emit,
   ) async {
-    // 로딩 상태로 변경
-    emit(state.copyWith(status: Status.loading));
-
-    await Future.delayed(const Duration(seconds: 1));
-
-    final tabId = event.tabId;
-
     try {
+      final tabId = event.tabId;
+      if (event.isRefresh) {
+        emit(
+          state.copyWith(
+            status: Status.initial, // 로딩 상태를 초기화 상태로 되돌림
+            currentPage: 1, // 페이지를 첫 페이지로 리셋
+            isEndOfPage: false, // 아직 마지막 페이지가 아님을 명시
+            viewModules: [], // 기존 데이터(viewModules)를 초기화
+          ),
+        );
+      }
+
+      // 로딩 상태로 변경
+      emit(state.copyWith(status: Status.loading));
+
+      await Future.delayed(const Duration(seconds: 1));
+
       // 데이터 fetch 시도
       final response = await _fetch(tabId: tabId);
 

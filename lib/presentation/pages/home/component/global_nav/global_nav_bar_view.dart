@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/constant.dart';
 import '../../../../../dependency_injection.dart';
 import '../../../../../domain/model/display/menu/menu.model.dart';
+import '../../bloc/menu_bloc/menu_bloc.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 import '../view_module_list/view_module_list.dart';
 
@@ -22,23 +23,38 @@ class GlobalNavBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TabBarView(
-        // menus 길이만큼 탭 뷰를 생성
-        children: List.generate(menus.length, (index) {
-          // 각 탭마다 새로운 BlocProvider 생성
-          // 주의: 메모리 사용량이 증가할 수 있음
-          return BlocProvider(
-            create:
-                (_) =>
-                    getIt<ViewModuleBloc>() // DI를 통해 UseCase 주입
-                      ..add(
-                        ViewModuleInitialized(menus[index].tabId),
-                      ), // 블록 생성 즉시 초기화 이벤트 발생
-            child: const ViewModuleList(), // 실제 뷰 모듈 리스트 표시
-          );
-        }),
-      ),
+    return BlocBuilder<MenuBloc, MenuState>(
+      builder: (context, state) {
+        switch (state.status) {
+          case Status.initial:
+          case Status.loading:
+            return const Expanded(
+              child: Center(child: CircularProgressIndicator()),
+            );
+          case Status.success:
+            return Expanded(
+              child: TabBarView(
+                // menus 길이만큼 탭 뷰를 생성
+                children: List.generate(menus.length, (index) {
+                  final tabId = menus[index].tabId;
+                  // 각 탭마다 새로운 BlocProvider 생성
+                  // 주의: 메모리 사용량이 증가할 수 있음
+                  return BlocProvider(
+                    create:
+                        (_) =>
+                            getIt<ViewModuleBloc>() // DI를 통해 UseCase 주입
+                              ..add(
+                                ViewModuleInitialized(tabId: tabId),
+                              ), // 블록 생성 즉시 초기화 이벤트 발생
+                    child: ViewModuleList(tabId: tabId), // 실제 뷰 모듈 리스트 표시
+                  );
+                }),
+              ),
+            );
+          case Status.error:
+            return const Center(child: Text('error'));
+        }
+      },
     );
   }
 }
