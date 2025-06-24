@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/extensions.dart';
 import '../../../../../../domain/model/display/view_module/view_module.model.dart';
+import '../carousel.view_module.dart';
 import '../view_module_A.dart';
 import '../view_module_B.dart';
 import '../view_module_C.dart';
@@ -12,7 +13,14 @@ import 'view_module_widget.dart';
 
 /// 앱에서 사용되는 여러 화면[모듈]을 Enum으로 정의
 /// 각각의 값은 특정 화면[View] 를 나타낸다.
-enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE }
+enum Modules {
+  viewModuleA,
+  viewModuleB,
+  viewModuleC,
+  viewModuleD,
+  viewModuleE,
+  carouselViewModule,
+}
 
 class ViewModuleFactory {
   /// ViewModule의 type값을 기반으로 해당하 Modules enum을 찾아
@@ -25,7 +33,7 @@ class ViewModuleFactory {
       final name = module.name.toSnakeCase();
       // ViewModule의 type이 Module 이름에 포함되어 있으면 해당 위젯 반환
       if (name.contains(type)) {
-        return module.toWidget() as Widget;
+        return module.toWidget(viewModule) as Widget;
       }
     }
     // 일치하는 Module이 없으면 기본 위젯 반환
@@ -38,7 +46,7 @@ class ViewModuleFactory {
 extension ModulesX on Modules {
   /// 각 Enum 값에 해당하는 위젯을 반환.
   /// 추후 모듈이 추가되면 해당 switch 문에 새로운 케이스를 추가해 확장 가능하다.
-  ViewModuleWidget toWidget() {
+  ViewModuleWidget toWidget(ViewModule info) {
     switch (this) {
       case Modules.viewModuleA:
         return const ViewModuleA();
@@ -50,6 +58,8 @@ extension ModulesX on Modules {
         return const ViewModuleD();
       case Modules.viewModuleE:
         return const ViewModuleE();
+      case Modules.carouselViewModule:
+        return CarouselViewModule(info: info);
     }
   }
 }

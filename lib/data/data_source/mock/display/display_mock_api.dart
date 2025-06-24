@@ -70,7 +70,7 @@ class DisplayMockApi implements DisplayApi {
   ) {
     if (page == 4) {
       return Future(
-        () => ResponseWrapper(
+        () => const ResponseWrapper(
           status: 'SUCCESS',
           code: '0000',
           message: '',
@@ -78,20 +78,8 @@ class DisplayMockApi implements DisplayApi {
         ),
       );
     }
-    late String source;
-    final endOfTabId = tabId % 10;
-    switch (endOfTabId) {
-      case 1:
-        source = DisplayMockData.viewModulesByTabIdCaseOne;
-      case 2:
-        source = DisplayMockData.viewModulesByTabIdCaseTwo;
-      case 3:
-        source = DisplayMockData.viewModulesByTabIdCaseThree;
-      case 4:
-        source = DisplayMockData.viewModulesByTabIdCaseFour;
-      case 5:
-        source = DisplayMockData.viewModulesByTabIdCaseFive;
-    }
+    final source = DisplayMockData.getViewModules();
+
     return Future(
       () => ResponseWrapper(
         status: 'SUCCESS',
