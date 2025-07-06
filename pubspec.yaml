@@ -24,6 +24,7 @@ dependencies:
   bloc_concurrency: ^0.3.0
   stream_transform: ^2.1.1
   injectable: ^2.5.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
