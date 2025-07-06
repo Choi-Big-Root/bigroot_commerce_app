@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/constant/app_colors.dart';
-import '../../../../../domain/model/display/product_info/product_info.model.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
 import 'view_module_factory/view_module_widget.dart';
 
