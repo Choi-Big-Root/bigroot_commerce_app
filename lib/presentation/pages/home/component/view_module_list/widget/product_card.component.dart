@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'product_card_widget.dart';
 
-class LargeProdictCard extends ProductCardWidget {
-  LargeProdictCard({
+class LargeProductCard extends ProductCardWidget {
+  LargeProductCard({
     required this.context,
     required super.productInfo,
     super.key,
