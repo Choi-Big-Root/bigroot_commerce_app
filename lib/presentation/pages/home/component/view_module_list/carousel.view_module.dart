@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/constant/app_colors.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
-import 'view_module_factory/view_module_widget.dart';
+import 'factory/view_module_widget.dart';
 
 class CarouselViewModule extends StatefulWidget with ViewModuleWidget {
   const CarouselViewModule({required this.info, super.key});

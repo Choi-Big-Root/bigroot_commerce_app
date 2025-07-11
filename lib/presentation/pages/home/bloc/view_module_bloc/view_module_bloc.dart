@@ -16,7 +16,7 @@ import '../../../../../domain/model/common/result.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
 import '../../../../../domain/usecase/display/display.usecase.dart';
 import '../../../../../domain/usecase/display/view_module/get_view_modules.usecase.dart';
-import '../../component/view_module_list/view_module_factory/view_module_factory.dart';
+import '../../component/view_module_list/factory/view_module_factory.dart';
 
 // 관련 파일들을 part 지시문으로 포함
 part 'view_module_event.dart';

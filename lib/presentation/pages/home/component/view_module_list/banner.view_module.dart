@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
-import 'view_module_factory/view_module_widget.dart';
+import 'factory/view_module_widget.dart';
 
 class BannerViewModule extends StatelessWidget with ViewModuleWidget {
   const BannerViewModule({required this.info, super.key});

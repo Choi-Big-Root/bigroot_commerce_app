@@ -6,7 +6,7 @@ import '../../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../../core/theme/custom/custom_theme.dart';
 import '../../../../../core/utils/constant.dart';
 import '../../../../../domain/model/display/display.model.dart';
-import 'view_module_factory/view_module_widget.dart';
+import 'factory/view_module_widget.dart';
 import 'widget/product_card.component.dart';
 import 'widget/view_module_padding.dart';
 import 'widget/view_module_title.dart';

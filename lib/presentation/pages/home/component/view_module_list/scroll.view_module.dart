@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/constant.dart';
 import '../../../../../domain/model/display/product_info/product_info.model.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
-import 'view_module_factory/view_module_widget.dart';
+import 'factory/view_module_widget.dart';
 import 'widget/product_card.component.dart';
 import 'widget/view_module_padding.dart';
 import 'widget/view_module_subtitle.dart';
