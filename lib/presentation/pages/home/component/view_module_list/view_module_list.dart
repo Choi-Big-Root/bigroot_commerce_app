@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/extensions.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
+import '../footer/footer.dart';
 
 /// 뷰 모듈 리스트를 표시하는 위젯
 /// BlocBuilder를 사용하여 상태 변화에 따라 UI 업데이트
@@ -55,12 +56,13 @@ class _ViewModuleListState extends State<ViewModuleList> {
       child: BlocBuilder<ViewModuleBloc, ViewModuleState>(
         builder: (_, state) {
           return (state.status.isInitial || state.viewModules.isEmpty)
-              ? const Center(child: CircularProgressIndicator())
+              ? const LoadingWidget()
               : ListView(
                 controller: scrollController,
                 children: [
                   ...state.viewModules,
                   if (state.status.isLoading) const LoadingWidget(),
+                  const Footer(),
                 ],
               );
           // 상태에 따른 UI 분기 처리

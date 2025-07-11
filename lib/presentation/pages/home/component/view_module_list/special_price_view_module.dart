@@ -113,12 +113,12 @@ class _SpecialPriceProduct extends StatelessWidget {
               '${productInfo.discountRate}%',
               style: textTheme.titleLarge?.discountRateCopyWith(),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(width: 4),
             Text(
               productInfo.price.toWon(),
               style: textTheme.titleLarge?.priceCopyWith(),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(width: 4),
             Text(
               productInfo.originalPrice.toWon(),
               style: textTheme.titleSmall?.originalCopyWith(),
