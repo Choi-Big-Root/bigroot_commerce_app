@@ -12,6 +12,7 @@ _ViewModuleDto _$ViewModuleDtoFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       subtitle: json['subtitle'] as String? ?? '',
       imageUrl: json['imageUrl'] as String? ?? '',
+      time: (json['time'] as num?)?.toInt() ?? -1,
       products:
           (json['products'] as List<dynamic>?)
               ?.map((e) => ProductInfoDto.fromJson(e as Map<String, dynamic>))
@@ -25,5 +26,6 @@ Map<String, dynamic> _$ViewModuleDtoToJson(_ViewModuleDto instance) =>
       'title': instance.title,
       'subtitle': instance.subtitle,
       'imageUrl': instance.imageUrl,
+      'time': instance.time,
       'products': instance.products,
     };

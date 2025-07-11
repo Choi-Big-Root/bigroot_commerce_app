@@ -25,6 +25,7 @@ dependencies:
   stream_transform: ^2.1.1
   injectable: ^2.5.0
   intl: ^0.20.2
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:

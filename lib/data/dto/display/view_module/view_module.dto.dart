@@ -12,6 +12,7 @@ abstract class ViewModuleDto with _$ViewModuleDto {
     @Default('') String title,
     @Default('') String subtitle,
     @Default('') String imageUrl,
+    @Default(-1) int time,
     @Default(<ProductInfoDto>[]) List<ProductInfoDto> products,
   }) = _ViewModuleDto;
 

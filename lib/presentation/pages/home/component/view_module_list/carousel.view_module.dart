@@ -62,7 +62,7 @@ class _CarouselViewModuleState extends State<CarouselViewModule> {
               return Image.network(src, fit: BoxFit.cover);
             },
             onPageChanged: (page) {
-              print('what is value : $page : ${page % products.length}');
+              //print('what is value : $page : ${page % products.length}');
               setState(() {
                 currentPage = page % products.length + 1;
               });
