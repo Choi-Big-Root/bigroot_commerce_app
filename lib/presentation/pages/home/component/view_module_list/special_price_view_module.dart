@@ -71,7 +71,7 @@ class SpecialPriceViewModule extends StatelessWidget with ViewModuleWidget {
 }
 
 class _SpecialPriceProduct extends StatelessWidget {
-  const _SpecialPriceProduct({required this.productInfo, super.key});
+  const _SpecialPriceProduct({required this.productInfo});
 
   final ProductInfo productInfo;
 

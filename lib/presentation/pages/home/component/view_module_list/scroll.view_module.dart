@@ -40,7 +40,7 @@ class ScrollViewModule extends StatelessWidget with ViewModuleWidget {
 }
 
 class _ImageList extends StatelessWidget {
-  const _ImageList({required this.products, super.key});
+  const _ImageList({required this.products});
 
   final List<ProductInfo> products;
 

@@ -15,7 +15,6 @@ class LargeProductCard extends ProductCardWidget {
          originalPriceStyle: Theme.of(context).textTheme.labelMedium,
          reviewStyle: Theme.of(context).textTheme.labelSmall,
        );
-
   final BuildContext context;
 }
 
@@ -30,8 +29,7 @@ class SmallProductCard extends ProductCardWidget {
          titleStyle: Theme.of(context).textTheme.labelMedium,
          priceStyle: Theme.of(context).textTheme.labelMedium,
          originalPriceStyle: Theme.of(context).textTheme.labelMedium,
-         reviewStyle: Theme.of(context).textTheme.labelMedium,
+         reviewStyle: Theme.of(context).textTheme.labelSmall,
        );
-
   final BuildContext context;
 }

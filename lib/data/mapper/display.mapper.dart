@@ -18,6 +18,7 @@ extension ViewModuleX on ViewModuleDto {
       imageUrl: imageUrl,
       time: time,
       products: products.map((product) => product.toModel()).toList(),
+      tabs: tabs
     );
   }
 }

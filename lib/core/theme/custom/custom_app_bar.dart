@@ -1,6 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../constant/app_colors.dart';
 
 class CustomAppBarTheme {
@@ -25,7 +23,7 @@ class CustomAppBarTheme {
   final Color unselectedLabelColor;
 
   static const int animationDuration = 400;
-  static final double containCuicularRadius = 30.h;
+  static const double containCuicularRadius = 30;
 
   static final CustomAppBarTheme market = CustomAppBarTheme(
     systemUiOverlayStyle: SystemUiOverlayStyle.light,
