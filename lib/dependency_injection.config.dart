@@ -19,6 +19,8 @@ import 'package:bigroot_commerce_app/domain/repository/display.repository.dart'
     as _i685;
 import 'package:bigroot_commerce_app/domain/usecase/display/display.usecase.dart'
     as _i73;
+import 'package:bigroot_commerce_app/presentation/main/bloc/cart_bloc/cart_bloc.dart'
+    as _i64;
 import 'package:bigroot_commerce_app/presentation/pages/home/bloc/menu_bloc/menu_bloc.dart'
     as _i53;
 import 'package:bigroot_commerce_app/presentation/pages/home/bloc/view_module_bloc/view_module_bloc.dart'
@@ -34,6 +36,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataSourceModule = _$DataSourceModule();
+    gh.factory<_i64.CartBloc>(() => _i64.CartBloc());
     gh.singleton<_i953.DisplayApi>(() => dataSourceModule.displayApi);
     gh.singleton<_i685.DisplayRepository>(
       () => _i196.DisplayRepositoryImpl(gh<_i953.DisplayApi>()),
